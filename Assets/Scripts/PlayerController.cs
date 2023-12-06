@@ -13,6 +13,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        // if W or S is pressed move forward or backward and change animation to walk
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        {
+            // change animation to walk
+            GetComponent<Animator>().SetBool("Foward Running", true);
+            
+        }   
+        else
+        {
+            // change animation to idle
+            GetComponent<Animator>().SetBool("Foward Running", false);
+        }
+
         // player is a capsule make it move forward and backward with W and S and the axis of the capsule is the z axis
         transform.Translate(0, 0, Input.GetAxis("Vertical") * Time.deltaTime * 20);
         // player is a capsule make it move left and right with A and D and the axis of the capsule is the x axis
