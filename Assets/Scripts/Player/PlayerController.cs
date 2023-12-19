@@ -99,7 +99,6 @@ public class PlayerController : MonoBehaviour
         {
             if (!b.activeSelf)
             {
-                Instantiate(b);
                 b.transform.position = bulletSpawn.position;
                 b.SetActive(true);
                 break;
