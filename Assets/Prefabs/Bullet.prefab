@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2274785447495382505
 Transform:
   m_ObjectHideFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6844972959664958575}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.97009754, y: 1.947, z: -0.545}
+  m_LocalPosition: {x: -5.788252, y: 0.94233054, z: 5.414707}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074700bf891050a4cbbf09211a159508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 2
 --- !u!96 &2857449073409224345
 TrailRenderer:
   serializedVersion: 3
