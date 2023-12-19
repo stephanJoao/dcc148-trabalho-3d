@@ -12,12 +12,12 @@ public class BulletHandler : MonoBehaviour
         if(gameObject.activeSelf)
         {
             transform.Translate(bulletSpeed * Time.deltaTime * transform.forward);
-            //Invoke(nameof(gameObject.SetActive(false), 10f);
+            Invoke(nameof(SetInactive), 10f);
         }
     }
 
     private void SetInactive()
     {
-
+        gameObject.SetActive(false);
     }
 }
