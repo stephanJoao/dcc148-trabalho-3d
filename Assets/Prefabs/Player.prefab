@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 859912091444676533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.742, z: -2.57}
+  m_LocalPosition: {x: 0.5, y: 1.65, z: -2.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -849,6 +849,7 @@ Transform:
   - {fileID: 876717280308246426}
   - {fileID: 8193576681294456235}
   - {fileID: 1350338337038527488}
+  - {fileID: 6596798758425754794}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8405878047056196751
@@ -891,6 +892,7 @@ MonoBehaviour:
   bulletPool: []
   bullet: {fileID: 6844972959664958575, guid: 9fb8a6d203cdf344bae8d643270c0ca1, type: 3}
   bulletSpawn: {fileID: 6596798758425754794}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &3794946217023405292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1041,7 +1043,7 @@ GameObject:
   - component: {fileID: 6596798758425754794}
   m_Layer: 0
   m_Name: BulletSpawn
-  m_TagString: Untagged
+  m_TagString: BulletSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1055,11 +1057,11 @@ Transform:
   m_GameObject: {fileID: 3451364101257798220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4002, y: 0.0702, z: -0.1138}
+  m_LocalPosition: {x: 0.057, y: 1.2833037, z: 0.724}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7634716920748904059}
+  m_Father: {fileID: 5743775792057501546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3571345849356700502
 GameObject:
@@ -2554,7 +2556,6 @@ Transform:
   - {fileID: 36753813233455576}
   - {fileID: 4272891518164535789}
   - {fileID: 1720242344931571471}
-  - {fileID: 6596798758425754794}
   m_Father: {fileID: 4324205198249309226}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7974970592504202719

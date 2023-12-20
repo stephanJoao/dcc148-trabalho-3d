@@ -10,8 +10,11 @@ public class PlayerController : MonoBehaviour
     private float mouseSensitivity = 150f;
     private float rotationSpeed = 5f;
 
+    [SerializeField] GameObject bullet;
+
     private Animator animator;
 
+    [SerializeField] Transform bulletSpawn;
     [Header("aim layer Collision")]
     [Space(5)]
     public LayerMask layerMask;
@@ -21,11 +24,9 @@ public class PlayerController : MonoBehaviour
     [Header("Pool Config")]
     [Space(5)]
     [SerializeField] List<GameObject> bulletPool;
-    [SerializeField] GameObject bullet;
-    [SerializeField] Transform bulletSpawn;
-
-    [SerializeField] GameObject cube;
     private readonly int poolSize = 10;
+
+    public Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,8 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity, 0);
         Camera.main.transform.Rotate(-Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity, 0, 0);
 
+        bulletSpawn.transform.position = transform.position + offset;
+        bulletSpawn.rotation = transform.rotation;
 
         if(Input.GetMouseButton(1) && Input.GetMouseButtonDown(0))
         {
@@ -100,11 +103,10 @@ public class PlayerController : MonoBehaviour
         {
             if (!b.activeSelf)
             {
-                b.transform.position = bulletSpawn.position;
-                b.transform.LookAt(cube.transform.position);
                 b.SetActive(true);
                 break;
             }
         }
     }
+
 }
