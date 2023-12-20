@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletSpawn;
 
+    [SerializeField] GameObject cube;
     private readonly int poolSize = 10;
 
     // Start is called before the first frame update
@@ -33,9 +34,9 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i <= poolSize; i++)
         {
-            Instantiate(bullet);
-            bullet.SetActive(false);
-            bulletPool.Add(bullet);
+            var b = Instantiate(bullet);
+            b.SetActive(false);
+            bulletPool.Add(b);
         }
     }
 
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButton(1) && Input.GetMouseButtonDown(0))
         {
             animator.Play("Shoot2");
+            Shoot();
         }
         else if(Input.GetMouseButton(1))
         {
@@ -85,7 +87,6 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("shoot");
-            Shoot();
         }
         else
         {
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour
             if (!b.activeSelf)
             {
                 b.transform.position = bulletSpawn.position;
+                b.transform.LookAt(cube.transform.position);
                 b.SetActive(true);
                 break;
             }

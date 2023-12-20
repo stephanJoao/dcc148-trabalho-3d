@@ -7,17 +7,21 @@ public class BulletHandler : MonoBehaviour
 
     [SerializeField] float bulletSpeed = 5f;
 
+    private bool bulletActive = false;
     void Update()
     {
         if(gameObject.activeSelf)
         {
             transform.Translate(bulletSpeed * Time.deltaTime * transform.forward);
-            Invoke(nameof(SetInactive), 10f);
+            if(!bulletActive)
+                Invoke(nameof(SetInactive), 5f);
+            bulletActive = true;
         }
     }
 
     private void SetInactive()
     {
         gameObject.SetActive(false);
+        bulletActive = false;
     }
 }
