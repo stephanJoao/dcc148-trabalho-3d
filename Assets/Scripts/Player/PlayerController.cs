@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private float moveX;
     private float moveY;
     private float speed = 5f;
-    private float mouseSensitivity = 150f;
+    private float mouseSensitivity = 300f;
     private float rotationSpeed = 5f;
 
     [SerializeField] GameObject bullet;

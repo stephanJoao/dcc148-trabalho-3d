@@ -46,4 +46,9 @@ public class BulletHandler : MonoBehaviour
         gameObject.SetActive(false);
         bulletActive = false;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        SetInactive();
+    }
 }

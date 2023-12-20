@@ -8,17 +8,43 @@ public class EnemyAIController : MonoBehaviour
 
     private NavMeshAgent agent;
     private GameObject player;
-    // Start is called before the first frame update
+    private Animator animator;
+
+    private bool chase = false;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        agent.destination = player.transform.position;
+        if(chase)
+            agent.destination = player.transform.position;
 
+        if(Vector3.Distance(player.transform.position, transform.position) <= 0.2f)
+        {
+            animator.SetTrigger("Attack");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == player)
+        {
+            chase = true;
+            animator.SetBool("Chase", true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == player)
+        {
+            chase = false;
+            animator.SetBool("Chase", false);
+        }
     }
 }

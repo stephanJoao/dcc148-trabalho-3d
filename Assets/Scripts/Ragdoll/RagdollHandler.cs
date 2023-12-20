@@ -32,6 +32,7 @@ public class RagdollHandler : MonoBehaviour
             c.enabled = state;
         }
 
+        ragdollState = !ragdollState;
     }
 
     private void Update()
@@ -39,7 +40,6 @@ public class RagdollHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             SetRagdollState(!ragdollState);
-            ragdollState = !ragdollState;
         }
     }
 }
