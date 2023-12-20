@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 offset;
 
+	public AudioSource audioShoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
             b.SetActive(false);
             bulletPool.Add(b);
         }
+		
     }
 
     // Update is called once per frame
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.Play("Shoot2");
             Shoot();
+			audioShoot.Play();
         }
         else if(Input.GetMouseButton(1))
         {
@@ -76,6 +80,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("shoot");
+			audioShoot.Play();
         }
         else
         {
