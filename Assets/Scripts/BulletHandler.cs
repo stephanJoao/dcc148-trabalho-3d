@@ -15,12 +15,16 @@ public class BulletHandler : MonoBehaviour
 
     private bool bulletActive = false;
 
+    public Vector3 offset;
+
+    [SerializeField] ParticleSystem bulletParticle;
 
     private void Start()
     {
         bulletRb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         bulletSpawn = GameObject.FindGameObjectWithTag("BulletSpawn").GetComponent<Transform>();
+        bulletParticle = GameObject.FindGameObjectWithTag("BulletParticle").GetComponent<ParticleSystem>();
 
 
 
@@ -34,7 +38,7 @@ public class BulletHandler : MonoBehaviour
             if (!bulletActive)
             {
                 transform.rotation = player.transform.rotation;
-                transform.position = bulletSpawn.transform.position;
+                transform.position = bulletSpawn.transform.position + offset;
                 Invoke(nameof(SetInactive), 5f);
             }
             bulletActive = true;
@@ -45,10 +49,18 @@ public class BulletHandler : MonoBehaviour
     {
         gameObject.SetActive(false);
         bulletActive = false;
+   
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            bulletParticle.transform.position = transform.position;
+            bulletParticle.Play();
+        }
         SetInactive();
+
+
     }
 }

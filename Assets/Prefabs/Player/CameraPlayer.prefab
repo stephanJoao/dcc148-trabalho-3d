@@ -79,37 +79,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 0}
-  m_ParentHash:
-  - m_Hash: -2059101261
-    m_ParentHash: 756556552
-  - m_Hash: 474849835
-    m_ParentHash: -2059101261
-  - m_Hash: 455108146
-    m_ParentHash: -2059101261
-  - m_Hash: 110589526
-    m_ParentHash: -2059101261
-  - m_Hash: -57128139
-    m_ParentHash: -2059101261
-  - m_Hash: -1640869398
-    m_ParentHash: -2059101261
-  - m_Hash: -70816841
-    m_ParentHash: -2059101261
-  - m_Hash: 29906644
-    m_ParentHash: -2059101261
-  - m_Hash: -1616138573
-    m_ParentHash: -2059101261
-  - m_Hash: 1705284560
-    m_ParentHash: -2059101261
-  - m_Hash: -1410687307
-    m_ParentHash: 756556552
-  - m_Hash: 853790479
-    m_ParentHash: 756556552
-  - m_Hash: -961261611
-    m_ParentHash: 756556552
-  - m_Hash: 1171638850
-    m_ParentHash: -961261611
-  - m_Hash: -170766949
-    m_ParentHash: -961261611
+  m_ParentHash: []
 --- !u!1 &1862826820029466705
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,13 +144,6 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
-    Iso: 200
-    ShutterSpeed: 0.005
-    Aperture: 16
-    BladeCount: 5
-    Curvature: {x: 2, y: 11}
-    BarrelClipping: 0.25
-    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 2
     m_InheritPosition: 0
@@ -253,7 +216,7 @@ MonoBehaviour:
   CameraDistance: 2
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   IgnoreTag: Untagged
   CameraRadius: 0.001
   DampingIntoCollision: 0
@@ -322,13 +285,6 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
-    Iso: 200
-    ShutterSpeed: 0.005
-    Aperture: 16
-    BladeCount: 5
-    Curvature: {x: 2, y: 11}
-    BarrelClipping: 0.25
-    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0

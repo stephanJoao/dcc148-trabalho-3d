@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour
     private float moveX;
     private float moveY;
     private float speed = 5f;
-    private float mouseSensitivity = 300f;
-    private float rotationSpeed = 5f;
+    private float mouseSensitivity = 500f;
 
     [SerializeField] GameObject bullet;
 
@@ -70,19 +69,6 @@ public class PlayerController : MonoBehaviour
             if (animator.GetBool("aim") != true)
             {
                 animator.SetBool("aim", true);
-            }
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, rayRange, layerMask))
-            {
-                Vector3 lookDirection = hit.point - transform.position;
-
-                if (lookDirection != Vector3.zero)
-                {
-                    Quaternion rotation = Quaternion.LookRotation(lookDirection);
-
-                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-                }
             }
 
 
