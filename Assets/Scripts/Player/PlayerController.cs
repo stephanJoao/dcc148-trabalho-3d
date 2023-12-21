@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
 
 	public AudioSource audioShoot;
 
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -43,7 +42,6 @@ public class PlayerController : MonoBehaviour
 		
     }
 
-    // Update is called once per frame
     void Update()
     {
         moveX = Input.GetAxis("Horizontal");
@@ -65,7 +63,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.Play("Shoot2");
             Shoot();
-			audioShoot.Play();
         }
         else if(Input.GetMouseButton(1))
         {
@@ -80,7 +77,6 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("shoot");
-			audioShoot.Play();
         }
         else
         {
@@ -95,6 +91,7 @@ public class PlayerController : MonoBehaviour
             if (!b.activeSelf)
             {
                 b.SetActive(true);
+                audioShoot.Play();
                 break;
             }
         }

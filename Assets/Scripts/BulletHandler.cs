@@ -32,7 +32,7 @@ public class BulletHandler : MonoBehaviour
     void Update()
     {
 
-        if(gameObject.activeSelf)
+        if (gameObject.activeSelf)
         {
             bulletRb.velocity = transform.forward * bulletSpeed;
             if (!bulletActive)
@@ -49,17 +49,23 @@ public class BulletHandler : MonoBehaviour
     {
         gameObject.SetActive(false);
         bulletActive = false;
-   
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             bulletParticle.transform.position = transform.position;
             bulletParticle.Play();
+            SetInactive();
         }
-        SetInactive();
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponentInParent<RagdollHandler>().SetRagdollState(true);
+            collision.rigidbody.AddForce(bulletRb.velocity, ForceMode.Impulse);
+            SetInactive();
+        }
 
 
     }

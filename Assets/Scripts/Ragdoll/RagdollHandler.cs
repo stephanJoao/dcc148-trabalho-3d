@@ -9,11 +9,15 @@ public class RagdollHandler : MonoBehaviour
     private Collider[] colliders;
 
     bool ragdollState = false;
-    void Start()
+
+    private void Awake()
     {
-        _animator = GetComponent<Animator>();
         rigidbodies = GetComponentsInChildren<Rigidbody>();
         colliders = GetComponentsInChildren<Collider>();
+    }
+    void Start()
+    {
+        _animator = GetComponentInParent<Animator>();
 
         SetRagdollState(ragdollState);
     }
@@ -35,11 +39,4 @@ public class RagdollHandler : MonoBehaviour
         ragdollState = !ragdollState;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            SetRagdollState(!ragdollState);
-        }
-    }
 }
