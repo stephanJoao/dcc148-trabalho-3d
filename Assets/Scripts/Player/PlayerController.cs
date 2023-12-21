@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private readonly int poolSize = 10;
 
 	public AudioSource audioShoot;
+	public AudioSource audioAmbience;
 
     void Start()
     {
@@ -37,7 +38,8 @@ public class PlayerController : MonoBehaviour
             b.SetActive(false);
             bulletPool.Add(b);
         }
-		
+		audioAmbience.Play();		
+
     }
 
     void Update()
