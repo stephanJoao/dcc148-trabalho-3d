@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAIController : MonoBehaviour
+public class EnemyAIController : MonoBehaviour, IKillable
 {
 
     private NavMeshAgent agent;
@@ -11,7 +11,7 @@ public class EnemyAIController : MonoBehaviour
     private Animator animator;
 
     private bool chase = false;
-
+    private bool dead = false;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -21,18 +21,21 @@ public class EnemyAIController : MonoBehaviour
 
     void Update()
     {
-        if(chase)
-            agent.destination = player.transform.position;
-
-        if(Vector3.Distance(player.transform.position, transform.position) <= 0.2f)
+        if (!dead)
         {
-            animator.SetTrigger("Attack");
+            if (chase)
+                agent.destination = player.transform.position;
+
+            if (Vector3.Distance(player.transform.position, transform.position) <= 2f)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == player)
+        if (other.gameObject == player)
         {
             chase = true;
             animator.SetBool("Chase", true);
@@ -46,5 +49,18 @@ public class EnemyAIController : MonoBehaviour
             chase = false;
             animator.SetBool("Chase", false);
         }
+    }
+
+    public void Damage()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Death()
+    {
+        dead = true;
+        agent.isStopped = true;
+        Destroy(gameObject, 5f);
+
     }
 }

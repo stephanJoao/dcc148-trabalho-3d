@@ -63,7 +63,8 @@ public class BulletHandler : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponentInParent<RagdollHandler>().SetRagdollState(true);
-            collision.rigidbody.AddForce(bulletRb.velocity, ForceMode.Impulse);
+            collision.rigidbody.AddForce(bulletRb.velocity * bulletSpeed, ForceMode.Impulse);
+            collision.gameObject.GetComponentInParent<IKillable>().Death();
             SetInactive();
         }
 

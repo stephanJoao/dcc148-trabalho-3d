@@ -25,8 +25,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] List<GameObject> bulletPool;
     private readonly int poolSize = 10;
 
-    public Vector3 offset;
-
 	public AudioSource audioShoot;
 
     void Start()
@@ -55,9 +53,6 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity, 0);
         Camera.main.transform.Rotate(-Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity, 0, 0);
-
-        bulletSpawn.transform.position = transform.position + offset;
-        bulletSpawn.rotation = transform.rotation;
 
         if(Input.GetMouseButton(1) && Input.GetMouseButtonDown(0))
         {

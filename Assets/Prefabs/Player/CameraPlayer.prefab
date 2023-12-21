@@ -58,8 +58,8 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 0
   m_ChildCameras:
-  - {fileID: 5150061780268533401}
-  - {fileID: 6643854175034305019}
+  - {fileID: 0}
+  - {fileID: 0}
   m_Instructions:
   - m_FullHash: 0
     m_VirtualCamera: {fileID: 5150061780268533401}

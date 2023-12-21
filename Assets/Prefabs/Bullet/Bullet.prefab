@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2229427529523523936}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 0}
   player: {fileID: 0}
   bulletSpeed: 15
+  offset: {x: 0, y: 0, z: 0}
   bulletParticle: {fileID: 3450954803258373324, guid: 48a735186cce78a4788d55a1d016af88, type: 3}
 --- !u!54 &2229427529523523936
 Rigidbody:
