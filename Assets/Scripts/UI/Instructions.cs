@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Instructions : MonoBehaviour
 {
+	public AudioSource audioInstructions;
+    
+    void Start()
+    {
+        audioInstructions.Play();
+    }
+
     public void onBackButton()
     {
         SceneManager.LoadScene("MenuScene");

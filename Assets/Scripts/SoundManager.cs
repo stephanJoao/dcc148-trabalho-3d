@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     void Start()
     {
-        audioAmbience = GetComponent<AudioSource>();
+        
     }
 
 
