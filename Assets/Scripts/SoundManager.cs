@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private AudioSource audioAmbience;
-    // Start is called before the first frame update
     void Start()
     {
         audioAmbience = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public static AudioClip GetRandomSound(List<AudioClip> audioList)
     {
-        
+        return audioList[Random.Range(0, audioList.Count)];
     }
 }

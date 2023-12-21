@@ -12,8 +12,21 @@ public class EnemyAIController : MonoBehaviour, IKillable
 
     private bool chase = false;
     private bool dead = false;
+
+    [Header("SFX")]
+    [Space(10)]
+    [SerializeField] List<AudioClip> footstepSounds;
+    [SerializeField] List<AudioClip> hurtSounds;
+    [SerializeField] List<AudioClip> idleSounds;
+    [SerializeField] List<AudioClip> attackSounds;
+
+    private AudioSource audioSource;
+
+
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
@@ -49,6 +62,29 @@ public class EnemyAIController : MonoBehaviour, IKillable
             chase = false;
             animator.SetBool("Chase", false);
         }
+    }
+
+    public void PlayFootstepSound()
+    {
+        SoundManager.GetRandomSound(footstepSounds);
+    }
+    public void PlayHurtSound()
+    {
+        SoundManager.GetRandomSound(footstepSounds);
+    }
+    public void PlayIdleSound()
+    {
+        SoundManager.GetRandomSound(footstepSounds);
+    }
+    public void PlayAttackSound()
+    {
+        SoundManager.GetRandomSound(footstepSounds);
+        
+    }
+
+    public void SetAudioClip(AudioClip audioClip)
+    {
+        audioSource.clip = audioClip;
     }
 
     public void Damage()
