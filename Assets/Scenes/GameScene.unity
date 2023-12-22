@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea483a5795876b4a8d5620dac016e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iterations: 2
+  iterations: 20
   player: {fileID: 0}
   zombie: {fileID: 7978494516845136269, guid: 3b7b29a8833abcf4b99099571c32efac, type: 3}
   lastRoom: {fileID: 0}
@@ -846,6 +846,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5526308606970446478, guid: b04be2af91020d54687b63bfc95d9aaf, type: 3}
+      propertyPath: winTxt
+      value: 
+      objectReference: {fileID: 1961879312}
     - target: {fileID: 5743775792057501546, guid: b04be2af91020d54687b63bfc95d9aaf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.883
@@ -1079,8 +1083,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

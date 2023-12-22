@@ -126,7 +126,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bulletSpeed: 15
   offset: {x: 0, y: 0, z: 0}
-  bulletParticle: {fileID: 326591405846740184, guid: 48a735186cce78a4788d55a1d016af88, type: 3}
+  bulletParticle: {fileID: 0}
 --- !u!54 &2229427529523523936
 Rigidbody:
   m_ObjectHideFlags: 0
