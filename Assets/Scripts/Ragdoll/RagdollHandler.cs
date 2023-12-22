@@ -6,14 +6,19 @@ public class RagdollHandler : MonoBehaviour
 {
     private Animator _animator;
     private Rigidbody[] rigidbodies;
-    private Collider[] colliders;
+    public List<Collider> colliders;
 
     bool ragdollState = false;
 
     private void Awake()
     {
         rigidbodies = GetComponentsInChildren<Rigidbody>();
-        colliders = GetComponentsInChildren<Collider>();
+        foreach(Collider collider in GetComponentsInChildren<Collider>())
+        {
+            if (!collider.gameObject.CompareTag("Enemy"))
+                colliders.Add(collider);
+
+        }
     }
     void Start()
     {

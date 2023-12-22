@@ -126,7 +126,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bulletSpeed: 15
   offset: {x: 0, y: 0, z: 0}
-  bulletParticle: {fileID: 3450954803258373324, guid: 48a735186cce78a4788d55a1d016af88, type: 3}
+  bulletParticle: {fileID: 326591405846740184, guid: 48a735186cce78a4788d55a1d016af88, type: 3}
 --- !u!54 &2229427529523523936
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e67a39d8d8406a41bd015c07bfdc2c2, type: 2}
+  - {fileID: 2100000, guid: e6756b7387ae33b4ba2e298a08173dea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -294,7 +294,7 @@ TrailRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 1
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1

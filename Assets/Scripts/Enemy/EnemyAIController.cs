@@ -66,36 +66,26 @@ public class EnemyAIController : MonoBehaviour, IKillable
 
     public void PlayFootstepSound()
     {
-        SoundManager.GetRandomSound(footstepSounds);
+        SoundManager.PlayAudioClip(SoundManager.GetRandomSound(footstepSounds), audioSource);
     }
     public void PlayHurtSound()
     {
-        SoundManager.GetRandomSound(footstepSounds);
+        SoundManager.PlayAudioClip(SoundManager.GetRandomSound(hurtSounds), audioSource);
     }
     public void PlayIdleSound()
     {
-        SoundManager.GetRandomSound(footstepSounds);
+        SoundManager.PlayAudioClip(SoundManager.GetRandomSound(idleSounds), audioSource);
     }
     public void PlayAttackSound()
     {
-        SoundManager.GetRandomSound(footstepSounds);
-        
-    }
-
-    public void SetAudioClip(AudioClip audioClip)
-    {
-        audioSource.clip = audioClip;
-    }
-
-    public void Damage()
-    {
-        throw new System.NotImplementedException();
+        SoundManager.PlayAudioClip(SoundManager.GetRandomSound(attackSounds), audioSource);
     }
 
     public void Death()
     {
         dead = true;
         agent.isStopped = true;
+        PlayHurtSound();
         Destroy(gameObject, 5f);
 
     }
