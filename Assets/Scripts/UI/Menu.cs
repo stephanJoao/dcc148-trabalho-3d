@@ -31,10 +31,6 @@ public class Menu : MonoBehaviour
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("GameScene");
 
         loadingSlider.value = i;
-        if(!asyncOperation.isDone) 
-        {
-            Debug.Log(asyncOperation.progress);
-        }
         return new WaitUntil(() => loadingSlider.value == 100);
 
     }

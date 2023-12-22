@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IKillable
     private float speed = 5f;
     private float mouseSensitivity = 500f;
     private bool dead = false;
+    public GameObject winTxt;
 
     [SerializeField] GameObject bullet;
     [SerializeField] ParticleSystem muzzleFlash;
@@ -118,6 +119,15 @@ public class PlayerController : MonoBehaviour, IKillable
         dead = true;
         Invoke(nameof(RestartGame), 2f);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("LastRoom"))
+        {
+            winTxt.SetActive(true);
+            Debug.Log("You win!");
+        }
     }
 
 }

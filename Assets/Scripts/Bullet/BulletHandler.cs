@@ -25,9 +25,6 @@ public class BulletHandler : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         bulletSpawn = GameObject.FindGameObjectWithTag("BulletSpawn").GetComponent<Transform>();
         bulletParticle = GameObject.FindGameObjectWithTag("BulletParticle").GetComponent<ParticleSystem>();
-
-
-
     }
     void Update()
     {

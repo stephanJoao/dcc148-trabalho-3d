@@ -8,10 +8,12 @@ public class MapGeneratorScript : MonoBehaviour
     [SerializeField] int iterations;
     [SerializeField] GameObject player;
     [SerializeField] GameObject zombie;
+    public GameObject lastRoom;
     private int numTiles = 100;    
     private int[,] tiles;
     public GameObject[] rooms;
     public List<GameObject> roomsList;
+
     void CreateRoom(int i, int j, int[] type, bool lastRoom)
     {
         GameObject room;
@@ -95,6 +97,9 @@ public class MapGeneratorScript : MonoBehaviour
             light.intensity = 4.5f;
             light.range = 40.0f;
             room.GetComponent<BoxCollider>().enabled = true;
+            this.lastRoom = room;
+            // tag last room
+            room.tag = "LastRoom";
         }
         else
         {
@@ -108,7 +113,6 @@ public class MapGeneratorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         // get player object
         player = GameObject.FindWithTag("Player");
         
