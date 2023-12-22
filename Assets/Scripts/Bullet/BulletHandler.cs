@@ -54,20 +54,12 @@ public class BulletHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            bulletParticle.transform.position = transform.position;
-            bulletParticle.Play();
-            SetInactive();
-        }
-        else if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponentInParent<RagdollHandler>().SetRagdollState(true);
             collision.rigidbody.AddForce(bulletRb.velocity * bulletSpeed, ForceMode.Impulse);
             collision.gameObject.GetComponentInParent<IKillable>().Death();
             SetInactive();
         }
-
-
     }
 }

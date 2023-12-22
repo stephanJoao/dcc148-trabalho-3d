@@ -1,23 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MapGeneratorScript : MonoBehaviour
 {
     [SerializeField] int iterations;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject zombie;
     private int numTiles = 100;    
     private int[,] tiles;
     public GameObject[] rooms;
-
+    public List<GameObject> roomsList;
     void CreateRoom(int i, int j, int[] type, bool lastRoom)
     {
         GameObject room;
 
         if (type[0] == 0 && type[1] == 1 && type[2] == 0 && type[3] == 0)
         {
-            room = Instantiate(rooms[0]); 
+            room = Instantiate(rooms[0]);
         }
         else if (type[0] == 1 && type[1] == 0 && type[2] == 0 && type[3] == 0)
         {
@@ -81,6 +82,7 @@ public class MapGeneratorScript : MonoBehaviour
         }
        
         Vector3 pos = new Vector3(i * 15, 0, j * 15);
+        roomsList.Add(room);
         room.transform.position = pos;
         room.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         room.transform.parent = transform;
@@ -106,6 +108,7 @@ public class MapGeneratorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         // get player object
         player = GameObject.FindWithTag("Player");
         
@@ -178,6 +181,7 @@ public class MapGeneratorScript : MonoBehaviour
         // get all prefabs in Assets/Prefabs/Rooms
         rooms = Resources.LoadAll<GameObject>("Prefabs/Rooms");
 
+
         // create rooms
         for (int m = 1; m < numTiles + 1; m++)
         {
@@ -188,12 +192,31 @@ public class MapGeneratorScript : MonoBehaviour
                     CreateRoom(m, n, new int[] { auxTiles[m+1, n], auxTiles[m, n+1], auxTiles[m-1, n], auxTiles[m, n-1] }, (m - 1 == i && n - 1 == j));
                 }
             }
-        }      
+        }
+        SpawnZombies();
+
+        BakeNavMesh();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void BakeNavMesh()
     {
-        
+        var navMeshSurface = FindObjectOfType<NavMeshSurface>();
+
+        navMeshSurface.BuildNavMesh();
     }
+    private void SpawnZombies()
+    {
+        foreach(GameObject room in roomsList)
+        {
+            foreach(Transform children in room.GetComponent<Transform>())
+            {
+                if(children.CompareTag("SpawnPoints"))
+                {
+                     foreach(Transform t in children.GetComponentInChildren<Transform>())
+                        Instantiate(zombie, t.transform);
+                }
+            }
+        }
+    }
+    
 }

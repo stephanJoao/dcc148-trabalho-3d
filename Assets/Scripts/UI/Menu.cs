@@ -12,7 +12,8 @@ public class Menu : MonoBehaviour
     public GameObject instructionsBtn;
     public GameObject loadingTxt;
     public Slider loadingSlider;
-    
+
+    private int i = 0;
     void Start()
     {
         audioMenu.Play();
@@ -28,17 +29,17 @@ public class Menu : MonoBehaviour
     IEnumerator LoadingCoroutine()
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("GameScene");
-        SceneManager.
+
+        loadingSlider.value = i;
         if(!asyncOperation.isDone) 
         {
-            loadingSlider.value = asyncOperation.progress;
+            Debug.Log(asyncOperation.progress);
         }
-
-        return new WaitUntil(() => asyncOperation.isDone);
+        return new WaitUntil(() => loadingSlider.value == 100);
 
     }
     public void onInstructionsButton()
     {
-        SceneManager.LoadScene("InstructionsScene");
+        SceneManager.LoadSceneAsync("InstructionsScene");
     }
 }

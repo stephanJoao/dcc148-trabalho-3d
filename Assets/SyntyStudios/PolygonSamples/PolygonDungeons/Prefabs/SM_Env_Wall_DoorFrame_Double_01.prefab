@@ -180,9 +180,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_StartPoint: {x: -3.8425322, y: 0.3133624, z: -0.66988987}
-  m_EndPoint: {x: -3.809813, y: 0.2833917, z: 0.75803524}
-  m_Width: 2.5090506
+  m_StartPoint: {x: -2.7, y: 0.2833917, z: 1.11}
+  m_EndPoint: {x: -2.6923926, y: 0.3133624, z: -0.98363703}
+  m_Width: 2
   m_CostModifier: -1
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0

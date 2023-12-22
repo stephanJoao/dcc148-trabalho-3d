@@ -11,7 +11,7 @@ public class EnemyAIController : MonoBehaviour, IKillable
     private Animator animator;
 
     private bool chase = false;
-    private bool dead = false;
+    public bool dead = false;
 
     [Header("SFX")]
     [Space(10)]
@@ -55,6 +55,14 @@ public class EnemyAIController : MonoBehaviour, IKillable
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == player)
+        {
+            chase = true;
+            animator.SetBool("Chase", true);
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject == player)

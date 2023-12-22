@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Wall
   - BulletParticle
+  - SpawnPoints
   layers:
   - Default
   - TransparentFX

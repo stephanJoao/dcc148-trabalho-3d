@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, IKillable
     private float mouseSensitivity = 500f;
     private bool dead = false;
 
-    [SerializeField] GameObject bullet; 
+    [SerializeField] GameObject bullet;
     [SerializeField] ParticleSystem muzzleFlash;
 
     private Animator animator;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour, IKillable
     [Header("Pool Config")]
     [Space(5)]
     [SerializeField] List<GameObject> bulletPool;
-    private readonly int poolSize = 10;
+    private readonly int poolSize = 30;
 
     public List<AudioClip> shootSounds;
     private AudioSource audioSource;
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour, IKillable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             GetComponentInChildren<RagdollHandler>().SetRagdollState(true);
             Death();
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour, IKillable
     {
         dead = true;
         Invoke(nameof(RestartGame), 2f);
-        
+
     }
 
 }
