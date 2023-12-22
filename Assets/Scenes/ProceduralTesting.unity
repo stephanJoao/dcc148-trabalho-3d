@@ -167,7 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea483a5795876b4a8d5620dac016e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iterations: 73
+  iterations: 100
+  player: {fileID: 0}
   rooms: []
 --- !u!1001 &582269909
 PrefabInstance:

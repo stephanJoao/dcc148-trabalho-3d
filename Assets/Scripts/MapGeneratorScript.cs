@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MapGeneratorScript : MonoBehaviour
 {
     [SerializeField] int iterations;
+    [SerializeField] GameObject player;
     private int numTiles = 100;    
     private int[,] tiles;
     public GameObject[] rooms;
 
-    void CreateRoom(int i, int j, int[] type)
+    void CreateRoom(int i, int j, int[] type, bool lastRoom)
     {
         GameObject room;
 
@@ -82,12 +84,34 @@ public class MapGeneratorScript : MonoBehaviour
         room.transform.position = pos;
         room.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         room.transform.parent = transform;
+
+        
+        Light light = room.transform.GetChild(room.transform.childCount - 1).GetChild(0).GetComponent<Light>();
+        
+        if(lastRoom)
+        {
+            light.intensity = 4.5f;
+            light.range = 40.0f;
+            room.GetComponent<BoxCollider>().enabled = true;
+        }
+        else
+        {
+            light.intensity = Random.Range(0.2f, 0.6f);
+            light.range = 40.0f;
+            room.GetComponent<BoxCollider>().enabled = false;
+        }       
     }
     
     
     // Start is called before the first frame update
     void Start()
     {
+        // get player object
+        player = GameObject.FindWithTag("Player");
+        
+        // set player position to middle of first room
+        player.transform.position = new Vector3(transform.position.x + 17.5f, 0, transform.position.z + 22.5f);
+        
         // probability of changing direction
         float p = 0.4f;
         int direction = 0;
@@ -160,9 +184,11 @@ public class MapGeneratorScript : MonoBehaviour
             for (int n = 1; n < numTiles + 1; n++)
             {
                 if (auxTiles[m, n] == 1)
-                    CreateRoom(m, n, new int[] { auxTiles[m+1, n], auxTiles[m, n+1], auxTiles[m-1, n], auxTiles[m, n-1] });
+                {
+                    CreateRoom(m, n, new int[] { auxTiles[m+1, n], auxTiles[m, n+1], auxTiles[m-1, n], auxTiles[m, n-1] }, (m - 1 == i && n - 1 == j));
+                }
             }
-        }        
+        }      
     }
 
     // Update is called once per frame
